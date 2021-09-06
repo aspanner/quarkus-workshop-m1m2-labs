@@ -1,0 +1,34 @@
+apiVersion: app.kiegroup.org/v2
+kind: KieApp
+metadata:
+  name: pam-demo
+spec:
+  environment: rhpam-authoring
+  upgrades:
+    enabled: true
+  commonConfig:
+    adminUser: admin
+    adminPassword: admin
+  objects:
+    console:
+      gitHooks:
+        from:
+          kind: Secret
+          name: githook
+      resources:
+        requests:
+          memory: 6Gi
+        limits:
+          memory: 6Gi
+      ssoClient:
+        name: admin
+        secret: admin
+    servers:
+      - id: kieserver
+        resources:
+          requests:
+            memory: 4Gi
+          limits:
+            memory: 4Gi
+        database:
+          type: mysql
