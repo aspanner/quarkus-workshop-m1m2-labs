@@ -26,12 +26,15 @@ import org.eclipse.microprofile.openapi.annotations.media.Schema;
 import org.eclipse.microprofile.openapi.annotations.parameters.Parameter;
 import org.eclipse.microprofile.openapi.annotations.responses.APIResponse;
 import org.eclipse.microprofile.openapi.annotations.responses.APIResponses;
-import org.jboss.logging.annotations.Message;
 
 import io.quarkus.hibernate.orm.panache.PanacheQuery;
 import io.quarkus.panache.common.Parameters;
 import io.quarkus.runtime.StartupEvent;
-import io.vertx.core.eventbus.EventBus;
+import io.vertx.axle.core.eventbus.EventBus;
+import javax.inject.Inject;
+import javax.ws.rs.POST;
+import java.util.concurrent.CompletionStage;
+import io.vertx.axle.core.eventbus.Message;
 
 @Path("/person")
 @ApplicationScoped
